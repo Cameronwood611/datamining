@@ -2,3 +2,4 @@ beautifulsoup4
 requests
 lxml
 latest-user-agents
+aiohttp
