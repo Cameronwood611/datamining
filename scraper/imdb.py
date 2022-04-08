@@ -42,7 +42,12 @@ async def traverse_imdb_movies(url):
             partial_movie_url = movie_node.get("href")
             full_movie_url = urljoin(url, partial_movie_url)
             print("COLLECTING MOVIE: ", movie_title)
-            reviews = await get_movie_reviews(full_movie_url)
+            try:
+                reviews = await get_movie_reviews(full_movie_url)
+            except Exception as e:
+                print(f"Encountered error for {movie_title}: {str(e)}")
+                reviews = {}
+                
             movie_review = { "title": movie_title, "reviews": reviews }
             all_reviews.append(movie_review)
         partial_next_page_url = sxpath(context, ".//body//a[@class='lister-page-next next-page']/@href")
