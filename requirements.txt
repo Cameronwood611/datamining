@@ -3,3 +3,6 @@ requests
 lxml
 latest-user-agents
 aiohttp
+numpy
+scikit-learn
+pandas
